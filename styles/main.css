@@ -14,23 +14,28 @@
 	--color-text: hsl(0, 0%, 100%);
 	--color-shadow: hsl(0, 0%, 0%);
 	--color-button-bet: hsl(120, 100%, 1%);
-	--color-bg-primary: hsl(120, 98%, 19%);
-	--color-bg-secondary: hsl(120, 100%, 5%);
+	--color-bg-primary: hsla(120, 98%, 19%, 0.960);
+	--color-bg-secondary: hsl(120, 100%, 5%, 0.960);
 }
 
 body {
 	color: var(--color-text);
 }
+.background__texture{
+	background-image: url("/img/texture.png");
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
 .board {
+	background: radial-gradient(circle, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%) no-repeat;
+	position: relative;
 	display: flex;
 	justify-content: center;
-	background: radial-gradient(circle, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%) no-repeat;
 	height: 100vh;
+	z-index: 2;
 }
 .board__title {
-text-transform: uppercase;
+	text-transform: uppercase;
 }
-
-
-/* background-image: radial-gradient(circle, rgba(1,95,1,1) 0%, rgba(0,25,0,1) 100%),
-	url("https://www.transparenttextures.com/patterns/classy-fabric.png"); */
