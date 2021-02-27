@@ -55,7 +55,7 @@ img {
 }
 
 /* Natural flow and rhythm in articles by default */
-article > * + * {
+article>*+* {
 	margin-top: 1em;
 }
 
@@ -65,4 +65,15 @@ button,
 textarea,
 select {
 	font: inherit;
+}
+
+/*input number remove arrows*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
 }
