@@ -1,6 +1,6 @@
 :root {
 	--size-bank: 7.5rem;
-	--size-container: 15rem;
+	--size-container: 35rem;
 
 	--font-size-title: 2.125rem;
 	--font-size-bank: 1.375rem;
@@ -9,6 +9,8 @@
 
 	--color-text: hsl(0, 0%, 100%);
 	--color-shadow: hsl(0, 0%, 0%);
+	--color-shadow-card-primary:  #8dff0f;
+	--color-shadow-card-secondary: #0fddff;
 	--color-button-bet: hsl(120, 100%, 1%);
 	--color-bg-primary: hsla(120, 98%, 19%, 0.960);
 	--color-bg-secondary: hsl(120, 100%, 5%, 0.960);
@@ -43,6 +45,33 @@ body {
 	justify-content: space-around;
 	width: var(--size-container);
 }
+.card{
+	position: relative;
+	width: 10.45em;
+	height: 15.25em;
+}
+.card::after {
+	content: "";
+	transform: scale(0.75);
+	background: linear-gradient(270deg, var(--color-shadow-card-primary), var(--color-shadow-card-secondary));
+	filter: blur(5vw);
+	position: absolute;
+	top: 1.5vw;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+.card--left{
+	background: url(../img/cards_sprites-min.png) 0 15.22em;
+}
+.card--middle{
+	background: url(../img/cards_sprites-min.png) -20.95em 15.22em;
+	margin-top: -5em;
+}
+.card--right{
+	background: url(../img/cards_sprites-min.png) -10.46em 15.22em;
+}
+
 .bank {
 	margin-left: var(--size-bank);
 	width: calc(100% - var(--size-bank));
