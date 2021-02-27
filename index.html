@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0"
-		/>
-		<link
-			rel="shortcut icon"
-			href="/img/favicon.ico"
-			type="image/x-icon"
-		/>
-		<link rel="stylesheet" href="/styles/main.css" />
-		<link rel="stylesheet" href="/styles/reset.css" />
-		<title>In Between</title>
-	</head>
-	<body>
-		<div class="background__texture"></div>
-		<main class="board">
-			<h1 class="board__title">In Between</h1>
 
-			<div class="card__container">
-				<div class="card card--left"></div>
-				<div class="card card--middle"></div>
-				<div class="card card--right"></div>
-			</div>
+<head>
+	<title>In Between</title>
 
-			<form class="bet__form">
-				<input
-					type="number"
-					name="amount-bet"
-					id="bet"
-					placeholder="enter the amount you want to bet"
-				/>
-				<button type="submit">PLAY</button>
-			</form>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-			<p class="bank">Bank: ${amount}</p>
-		</main>
-	</body>
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@500;800&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="/styles/main.css" />
+	<link rel="stylesheet" href="/styles/reset.css" />
+</head>
+
+<body>
+	<div class="background__texture"></div>
+	<main class="board">
+		<h1 class="board__title">In Between</h1>
+
+		<div class="card__container">
+			<div class="card card--left"></div>
+			<div class="card card--middle"></div>
+			<div class="card card--right"></div>
+		</div>
+
+		<form class="bet__form">
+			<input type="number" name="amount-bet" id="bet" placeholder="enter the amount you want to bet" />
+			<button type="submit">PLAY</button>
+		</form>
+
+		<p class="bank">Bank: ${amount}</p>
+	</main>
+</body>
+
 </html>

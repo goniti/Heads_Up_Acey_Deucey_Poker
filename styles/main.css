@@ -9,7 +9,7 @@
 
 	--color-text: hsl(0, 0%, 100%);
 	--color-shadow: hsl(0, 0%, 0%);
-	--color-shadow-card-primary:  #8dff0f;
+	--color-shadow-card-primary: #8dff0f;
 	--color-shadow-card-secondary: #0fddff;
 	--color-button-bet: hsl(120, 100%, 1%);
 	--color-bg-primary: hsla(120, 98%, 19%, 0.960);
@@ -19,13 +19,15 @@
 body {
 	color: var(--color-text);
 }
-.background__texture{
+
+.background__texture {
 	background-image: url("/img/texture.png");
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	z-index: 1;
 }
+
 .board {
 	background: radial-gradient(circle, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%) no-repeat;
 	position: relative;
@@ -36,20 +38,24 @@ body {
 	height: 100vh;
 	z-index: 2;
 }
+
 .board__title {
 	text-transform: uppercase;
 	font-size: var(--font-size-title);
 }
-.card__container{
+
+.card__container {
 	display: flex;
 	justify-content: space-around;
 	width: var(--size-container);
 }
-.card{
+
+.card {
 	position: relative;
 	width: 10.45em;
 	height: 15.25em;
 }
+
 .card::after {
 	content: "";
 	transform: scale(0.75);
@@ -61,14 +67,17 @@ body {
 	width: 100%;
 	z-index: -1;
 }
-.card--left{
+
+.card--left {
 	background: url(../img/cards_sprites-min.png) 0 15.22em;
 }
-.card--middle{
+
+.card--middle {
 	background: url(../img/cards_sprites-min.png) -20.95em 15.22em;
 	margin-top: -5em;
 }
-.card--right{
+
+.card--right {
 	background: url(../img/cards_sprites-min.png) -10.46em 15.22em;
 }
 
