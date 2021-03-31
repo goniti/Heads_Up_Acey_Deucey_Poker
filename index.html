@@ -18,26 +18,25 @@
 	<div class="background__texture"></div>
 	<main class="board">
 		<h1 class="board__title">In Between</h1>
-
-		<div class="card__container">
-			<div class="card card--left"></div>
-			<div class="card card--middle"></div>
-			<div class="card card--right"></div>
+		<div class="board__cards">
+			<div class="board__card board__card--left"></div>
+			<div class="board__card board__card--right"></div>
+			<div class="board__card board__card--middle"></div>
 		</div>
-
-		<input class="bet" type="checkbox" id="checkbox">
-		<div class="bet__container">
-			<form class="bet__form">
-				<input id="bet" class="bet__input" name="amount-bet" placeholder="enter the amount you want"
-					type="number" min="1" max="100" required>
-				<label class="bet__label" for="checkbox">
-					<button class="bet__button" type="submit">BET</button>
-				</label>
-				<label class="bet__play" for="checkbox" data-title="Play"></label>
-			</form>
+		<div class="board__bet">
+			<p id="bankroll" class="bank"></p>
+			<input class="bet" type="checkbox" id="checkbox">
+			<div class="bet__container">
+				<form class="bet__form">
+					<input id="bet" class="bet__input" name="amount-bet" placeholder="enter the amount you want"
+						type="number" min="1" max="100" required>
+					<label class="bet__label" for="checkbox">
+						<button class="bet__button" type="submit">BET</button>
+					</label>
+					<label class="bet__play" for="checkbox" data-title="Play"></label>
+				</form>
+			</div>
 		</div>
-
-		<p id="bankroll" class="bank"></p>
 	</main>
 
 	<script src="./js/main.js"></script>
