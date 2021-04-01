@@ -72,10 +72,6 @@ body {
 	z-index: -1;
 }
 
-.board__card--1 {
-	background: url(../img/cards_sprites-min.png) 0 0;
-}
-
 .board__card--2 {
 	background: url(../img/cards_sprites-min.png) -10.5em 0;
 }
@@ -122,6 +118,10 @@ body {
 
 .board__card--King {
 	background: url(../img/cards_sprites-min.png) 10.5em 0;
+}
+
+.board__card--As {
+	background: url(../img/cards_sprites-min.png) 0 0;
 }
 
 .bank {
