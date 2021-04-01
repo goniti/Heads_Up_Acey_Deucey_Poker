@@ -72,17 +72,56 @@ body {
 	z-index: -1;
 }
 
-.board__card--left {
-	background: url(../img/cards_sprites-min.png) 0 15.22em;
+.board__card--1 {
+	background: url(../img/cards_sprites-min.png) 0 0;
 }
 
-.board__card--middle {
-	background: url(../img/cards_sprites-min.png) -20.95em 15.22em;
-	margin-top: -5em;
+.board__card--2 {
+	background: url(../img/cards_sprites-min.png) -10.5em 0;
 }
 
-.board__card--right {
-	background: url(../img/cards_sprites-min.png) -10.46em 15.22em;
+.board__card--3 {
+	background: url(../img/cards_sprites-min.png) -20.95em 0;
+}
+
+.board__card--4 {
+	background: url(../img/cards_sprites-min.png) -31.4em 0;
+}
+
+.board__card--5 {
+	background: url(../img/cards_sprites-min.png) -41.85em 0;
+}
+
+.board__card--6 {
+	background: url(../img/cards_sprites-min.png) -52.32em 0;
+}
+
+.board__card--7 {
+	background: url(../img/cards_sprites-min.png) 73.3em 0;
+}
+
+.board__card--8 {
+	background: url(../img/cards_sprites-min.png) -73.3em 0;
+}
+
+.board__card--9 {
+	background: url(../img/cards_sprites-min.png) 52.32em 0;
+}
+
+.board__card--10 {
+	background: url(../img/cards_sprites-min.png) 41.85em 0;
+}
+
+.board__card--Knave {
+	background: url(../img/cards_sprites-min.png) 31.4em 0;
+}
+
+.board__card--Queen {
+	background: url(../img/cards_sprites-min.png) 20.95em 0;
+}
+
+.board__card--King {
+	background: url(../img/cards_sprites-min.png) 10.5em 0;
 }
 
 .bank {
@@ -91,150 +130,12 @@ body {
 	text-align: center;
 }
 
-.bet {
+.bet__form {
 	display: none;
 }
 
-.bet:checked+.bet__container .bet__form {
-	width: 92vw;
-}
-
-.bet:checked+.bet__container .bet__play {
-	visibility: hidden;
-	opacity: 0;
-	transform: scale(0.7);
-}
-
-.bet:checked+.bet__container .bet__input,
-.bet:checked+.bet__container .bet__label {
-	transition: 0.2s 0.1s;
-	visibility: visible;
-	opacity: 1;
-	transform: scale(1);
-}
-
-.bet:not(:checked)+.bet__container .bet__input:required:valid~.bet__play::before,
-.bet:checked+.bet__container .bet__input:required:valid~.bet__play::before {
-	content: "Rebet";
-}
-
-.bet:not(:checked)+.bet__container .bet__input:required:valid~.bet__play {
-	pointer-events: none;
-	cursor: default;
-}
-
-.bet__container,
-.bet__form,
-.bet__play {
-	width: 20em;
-	height: 6.25em;
-}
-
-.bet__container {
-	position: relative;
-	font-weight: 700;
-}
-
-.bet__form,
-.bet__play {
-	position: absolute;
-	border-radius: 6.25em;
-	background-color: var(--color-bet-button);
-	transition: 0.2s;
-}
-
-.bet__form {
-	left: 50%;
-	transform: translateX(-50%);
-	padding: 0.625em;
-	box-sizing: border-box;
-	box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.3);
-	display: flex;
-	justify-content: center;
-}
-
-.bet__play {
-	color: var(--color-text);
-	background-color: var(--color-bet-button);
-	top: 0;
-	cursor: pointer;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.bet__play::before {
-	font-size: 1.75em;
-	content: attr(data-title);
-}
-
-.bet__input,
-.bet__button {
-	font: inherit;
-	border: 0;
-	outline: 0;
-	border-radius: 5em;
-	box-sizing: border-box;
-}
-
-.bet__input,
-.bet__label {
-	opacity: 0;
-	visibility: hidden;
-	transform: scale(0.7);
-	transition: 0s;
-}
-
-.bet__input {
-	color: var(--color-bg-primary);
-	background-color: var(--color-bet-button);
-	height: 100%;
-	width: 100%;
-	padding: 0 0.714em;
-	font-size: 0.95em;
-}
-
-.bet__input::placeholder {
-	color: var(--color-text);
-	font-weight: var(--font-weight-bank);
-	text-shadow: 0px 0px 1.5px var(--color-shadow-card-primary);
-}
-
-.bet__input:required:valid {
-	color: var(--color-text);
-}
-
-.bet__input:required:valid+.bet__label {
-	color: var(--color-text);
-}
-
-.bet__input:required:valid+.bet__label::before {
-	pointer-events: initial;
-}
-
-.bet__label {
-	color: var(--color-bet-button);
-	height: 100%;
-	width: auto;
-	font-size: 1.5em;
-}
-
-.bet__label::before {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-	cursor: pointer;
-}
-
-.bet__button {
-	color: inherit;
-	padding: 0;
-	height: 100%;
-	width: 5em;
-	background-color: var(--color-bg-primary);
+.bet__play--again {
+	display: none;
 }
 
 @media (min-width: 768px) {
@@ -247,15 +148,6 @@ body {
 		flex-direction: column;
 		align-items: center;
 		width: 100vw;
-	}
-
-	.bet__input,
-	.bet__label {
-		font-size: 1.75em;
-	}
-
-	.bet:checked+.bet__container .bet__form {
-		width: 37.5em;
 	}
 
 	.bank {

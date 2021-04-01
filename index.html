@@ -16,26 +16,23 @@
 
 <body>
 	<div class="background__texture"></div>
+
 	<main class="board">
 		<h1 class="board__title">In Between</h1>
 		<div class="board__cards">
-			<div class="board__card board__card--left"></div>
-			<div class="board__card board__card--right"></div>
-			<div class="board__card board__card--middle"></div>
+			<div id="card-min" class="board__card"></div>
+			<div id="card-max" class="board__card"></div>
+			<div id="card-guessed" class="board__card"></div>
 		</div>
 		<div class="board__bet">
 			<p id="bankroll" class="bank"></p>
-			<input class="bet" type="checkbox" id="checkbox">
-			<div class="bet__container">
-				<form class="bet__form">
-					<input id="bet" class="bet__input" name="amount-bet" placeholder="enter the amount you want"
-						type="number" min="1" max="100" required>
-					<label class="bet__label" for="checkbox">
-						<button class="bet__button" type="submit">BET</button>
-					</label>
-					<label class="bet__play" for="checkbox" data-title="Play"></label>
-				</form>
-			</div>
+			<button id="bet-play" class="bet__play">Play</button>
+			<form id="bet-form" class="bet__form">
+				<input id="bet-input" class="bet__input" name="amount-bet" placeholder="enter the amount you want"
+					type="number" min="1" max="100" required>
+				<button class="bet__button" type="submit">BET</button>
+			</form>
+			<button id="bet-again" class="bet__play--again">Play Again</button>
 		</div>
 	</main>
 
