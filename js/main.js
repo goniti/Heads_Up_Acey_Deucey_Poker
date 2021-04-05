@@ -34,16 +34,37 @@ const game = {
 	randomizeCard: () => {
 		game.valuesCards = game.getTwoNumbers(game.minValue, game.maxValue)
 	},
+	animateTurnOver: (elements) => {
+		let firstFlipAnimation = `board__card--flip-1`
+		let SecondFlipAnimation = `board__card--flip-2`
+
+		if (elements === 'dealCards') {
+			cardLeft.classList.add(SecondFlipAnimation)
+			cardRight.classList.add(SecondFlipAnimation)
+			cardMiddle.classList.add(firstFlipAnimation)
+		} else if (elements === 'reshuffledCard') {
+			cardMiddle.classList.add(SecondFlipAnimation)
+			cardLeft.classList.add(firstFlipAnimation)
+			cardRight.classList.add(firstFlipAnimation)
+			let soundCardDeal = new Audio('../audio/dealing-card.wav')
+			soundCardDeal.play()
+		} else {
+			cardMiddle.classList.add(SecondFlipAnimation)
+			let soundCardFlip = new Audio('../audio/card-flip.wav')
+			soundCardFlip.play()
+		}
+	},
 	displayCards: () => {
 		cardLeft.className = 'board__card'
+		cardRight.className = 'board__card'
+		cardMiddle.className = 'board__card board__card--undefined'
+		game.animateTurnOver('dealCards')
 		cardLeft.classList.add(
 			`board__card--${game.cards[game.valuesCards.min]}`
 		)
-		cardRight.className = 'board__card'
 		cardRight.classList.add(
 			`board__card--${game.cards[game.valuesCards.max]}`
 		)
-		cardMiddle.className = 'board__card board__card--undefined'
 	},
 	turnOverGuessingCard: () => {
 		game.valuesCards.random = game.randomInteger(
@@ -53,6 +74,7 @@ const game = {
 		cardMiddle.className = `board__card board__card--${
 			game.cards[game.valuesCards.random]
 		}`
+		game.animateTurnOver()
 	},
 	handleActionPlayer: () => {
 		buttonPlay.addEventListener('click', () => {
@@ -62,6 +84,7 @@ const game = {
 		buttonPlayAgain.addEventListener('click', () => {
 			buttonPlayAgain.style.display = 'none'
 			formBet.style.display = 'block'
+			game.animateTurnOver('reshuffledCard')
 			game.launch()
 		})
 		formBet.addEventListener('submit', (event) => {
@@ -72,6 +95,7 @@ const game = {
 			event.preventDefault()
 		})
 	},
+
 	handleResult: () => {
 		game.turnOverGuessingCard()
 		let cardMin = game.valuesCards.min
