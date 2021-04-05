@@ -3,7 +3,6 @@ const game = {
 	cards: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Knave', 'Queen', 'King', 'As'],
 	minValue: 0,
 	maxValue: 12,
-
 	elements: () => {
 		bankAmount = document.querySelector('#bankroll')
 		buttonPlay = document.querySelector('#bet-play')
@@ -13,7 +12,7 @@ const game = {
 		cardLeft = document.querySelector('#card-min')
 		cardRight = document.querySelector('#card-max')
 		cardMiddle = document.querySelector('#card-guessed')
-		resultMessage = document.querySelector('#result-message')
+		boardMessage = document.querySelector('#board-message')
 	},
 	randomInteger(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min
@@ -76,60 +75,75 @@ const game = {
 		}`
 		game.animateTurnOver()
 	},
+	showBetForm: () => {
+		buttonPlayAgain.style.display = 'none'
+		buttonPlay.style.display = 'none'
+		formBet.style.display = 'block'
+	},
+	showPlayAgain: () => {
+		formBet.style.display = 'none'
+		buttonPlayAgain.style.display = 'block'
+	},
 	handleActionPlayer: () => {
 		buttonPlay.addEventListener('click', () => {
-			buttonPlay.style.display = 'none'
-			formBet.style.display = 'block'
+			game.showBetForm()
 		})
 		buttonPlayAgain.addEventListener('click', () => {
-			buttonPlayAgain.style.display = 'none'
-			formBet.style.display = 'block'
+			game.showBetForm()
 			game.animateTurnOver('reshuffledCard')
 			game.launch()
 		})
 		formBet.addEventListener('submit', (event) => {
-			formBet.style.display = 'none'
-			buttonPlayAgain.style.display = 'block'
-			game.betValue = event.target[0].value
-			game.handleResult()
 			event.preventDefault()
+			game.handleError(event.target[0].value)
+			game.showPlayAgain()
+
 		})
 	},
-
-	handleResult: () => {
+	handleError: (amount) => {
+		if (amount > game.bankroll) {
+			game.handleMessage('Impossible de parié, Token insuffisant')
+			game.showBetForm()
+		} else if (amount <= 0) {
+			game.handleMessage('Veuillez misez un nombre supérieur a zéro')
+		} else {
+			game.handleResult(amount)
+		}
+	},
+	handleResult: (betValue) => {
 		game.turnOverGuessingCard()
 		let cardMin = game.valuesCards.min
 		let cardMax = game.valuesCards.max
 		let cardRandom = game.valuesCards.random
 
 		if (cardRandom > cardMin && cardRandom < cardMax) {
-			let doubledGain = game.betValue * 2
+			let doubledGain = betValue * 2
 			game.bankroll = game.bankroll + doubledGain
-			game.handleResultMessage(
+			game.handleMessage(
 				`Bravo vous avez gagné ${doubledGain} Token !`
 			)
 		} else if (cardRandom === cardMin || cardRandom === cardMax) {
-			let threefoldGain = game.betValue * 3
+			let threefoldGain = betValue * 3
 			game.bankroll = game.bankroll + threefoldGain
-			game.handleResultMessage(
+			game.handleMessage(
 				`Parfait ! Mise triplée ${threefoldGain} Token ajouté`
 			)
 		} else {
-			game.bankroll = game.bankroll - game.betValue
-			game.handleResultMessage(
-				`Pas de chance, vous avez perdu ${game.betValue} Token !`
+			game.bankroll = game.bankroll - betValue
+			game.handleMessage(
+				`Pas de chance, vous avez perdu ${betValue} Token !`
 			)
 		}
 		game.handleBankRoll()
 	},
-	handleResultMessage: (message) => {
-		resultMessage.textContent = message
+	handleMessage: (text) => {
+		boardMessage.textContent = text
 	},
 	handleBankRoll: () => {
 		bankAmount.textContent = `Bank: ${game.bankroll} Token`
 	},
 	launch: () => {
-		game.handleResultMessage('')
+		game.handleMessage('')
 		game.randomizeCard()
 		game.displayCards()
 		game.handleBankRoll()
