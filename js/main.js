@@ -54,25 +54,31 @@ const game = {
 		}
 	},
 	displayCards: () => {
-		cardLeft.className = 'board__card'
-		cardRight.className = 'board__card'
-		cardMiddle.className = 'board__card board__card--undefined'
+		game.hideCard()
+
 		game.animateTurnOver('dealCards')
-		cardLeft.classList.add(
-			`board__card--${game.cards[game.valuesCards.min]}`
-		)
-		cardRight.classList.add(
-			`board__card--${game.cards[game.valuesCards.max]}`
-		)
+		setTimeout(() => {
+			cardLeft.classList.add(
+				`board__card--${game.cards[game.valuesCards.min]}`
+			)
+			cardRight.classList.add(
+				`board__card--${game.cards[game.valuesCards.max]}`
+			)
+		}, 200)
 	},
 	turnOverGuessingCard: () => {
 		game.valuesCards.random = game.randomInteger(
 			game.minValue,
 			game.maxValue
 		)
-		cardMiddle.className = `board__card board__card--${
-			game.cards[game.valuesCards.random]
-		}`
+		cardRight.classList.remove(`board__card--flip-2`)
+		cardLeft.classList.remove(`board__card--flip-2`)
+
+		setTimeout(() => {
+			cardMiddle.className = `board__card board__card--${
+				game.cards[game.valuesCards.random]
+			}`
+		}, 340)
 		game.animateTurnOver()
 	},
 	showBetForm: () => {
@@ -86,6 +92,7 @@ const game = {
 	},
 	handleActionPlayer: () => {
 		buttonPlay.addEventListener('click', () => {
+			game.launch()
 			game.showBetForm()
 		})
 		buttonPlayAgain.addEventListener('click', () => {
@@ -101,7 +108,6 @@ const game = {
 	handleError: (amount) => {
 		if (amount > game.bankroll) {
 			game.handleMessage('Impossible de parié, Token insuffisant')
-
 		} else if (amount <= 0) {
 			game.handleMessage('Veuillez misez un nombre supérieur a zéro')
 		} else {
@@ -141,6 +147,11 @@ const game = {
 	handleBankRoll: () => {
 		bankAmount.textContent = `Bank: ${game.bankroll} Token`
 	},
+	hideCard: () => {
+		cardLeft.className = 'board__card board__card--undefined'
+		cardRight.className = 'board__card board__card--undefined'
+		cardMiddle.className = 'board__card board__card--undefined'
+	},
 	launch: () => {
 		game.handleMessage('')
 		game.randomizeCard()
@@ -149,7 +160,7 @@ const game = {
 	},
 	init: () => {
 		game.elements()
-		game.launch()
+		game.hideCard()
 		game.handleActionPlayer()
 	},
 }
