@@ -96,18 +96,17 @@ const game = {
 		formBet.addEventListener('submit', (event) => {
 			event.preventDefault()
 			game.handleError(event.target[0].value)
-			game.showPlayAgain()
-
 		})
 	},
 	handleError: (amount) => {
 		if (amount > game.bankroll) {
 			game.handleMessage('Impossible de parié, Token insuffisant')
-			game.showBetForm()
+
 		} else if (amount <= 0) {
 			game.handleMessage('Veuillez misez un nombre supérieur a zéro')
 		} else {
 			game.handleResult(amount)
+			game.showPlayAgain()
 		}
 	},
 	handleResult: (betValue) => {
