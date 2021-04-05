@@ -59,7 +59,9 @@ body {
 	position: relative;
 	width: 10.45em;
 	height: 15.25em;
-	box-shadow: inset 0px -1px 0px 5px var(--color-text)
+	box-shadow: inset 0px -1px 0px 5px var(--color-text);
+	border: solid 1px black;
+	border-radius: 5px;
 }
 
 .board__card::after {
@@ -197,7 +199,7 @@ body {
 @keyframes flip-scale-2-ver-left {
 	0% {
 
-		transform: rotateY(0) ;
+		transform: rotateY(0);
 		transform-origin: 0% 50%;
 	}
 
@@ -214,7 +216,7 @@ body {
 
 @keyframes flip-scale-2-ver-right {
 	0% {
-		transform: rotateY(0) ;
+		transform: rotateY(0);
 		transform-origin: 100% 50%;
 	}
 
