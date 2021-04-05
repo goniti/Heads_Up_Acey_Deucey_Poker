@@ -4,8 +4,7 @@
 
 	--font-size-title: 2.125rem;
 	--font-size-bank: 1.375rem;
-
-	--font-weight-bank: 500;
+	--font-size-message: 1.25rem;
 
 	--color-text: hsl(0, 0%, 100%);
 	--color-shadow: hsl(0, 0%, 0%);
@@ -15,6 +14,8 @@
 	--color-bg-primary: hsla(120, 98%, 19%, 0.960);
 	--color-bg-secondary: hsl(120, 100%, 5%, 0.960);
 	--color-bet-button: hsl(110, 72%, 28%);
+	--color-bet-message: hsl(61, 72%, 28%);
+
 }
 
 body {
@@ -53,6 +54,7 @@ body {
 	flex-wrap: wrap;
 	max-width: 100vw;
 }
+
 .board__cards :last-child {
 	margin-top: -5em;
 }
@@ -74,9 +76,11 @@ body {
 	width: 100%;
 	z-index: -1;
 }
+
 .board__card--undefined {
-	background: url(../img/cards_sprites-min.png)  -20.95em 15.2em;
+	background: url(../img/cards_sprites-min.png) -20.95em 15.2em;
 }
+
 .board__card--2 {
 	background: url(../img/cards_sprites-min.png) -10.5em 0;
 }
@@ -129,10 +133,25 @@ body {
 	background: url(../img/cards_sprites-min.png) 0 0;
 }
 
+.board__bet {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .bank {
 	font-size: var(--font-size-bank);
-	font-weight: var(--font-weight-bank);
 	text-align: center;
+	padding: 0.5em 0;
+}
+
+.bet__message {
+	font-size: var(--font-size-message);
+	color: var(--color-bet-message);
+	text-align: center;
+	height: 2em;
+	max-width: 70vw;
+	line-height: 1.2;
 }
 
 .bet__form {

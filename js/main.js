@@ -13,6 +13,7 @@ const game = {
 		cardLeft = document.querySelector('#card-min')
 		cardRight = document.querySelector('#card-max')
 		cardMiddle = document.querySelector('#card-guessed')
+		resultMessage = document.querySelector('#result-message')
 	},
 	randomInteger(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min
@@ -78,29 +79,36 @@ const game = {
 		let cardRandom = game.valuesCards.random
 
 		if (cardRandom > cardMin && cardRandom < cardMax) {
-			game.bankroll = game.bankroll + (game.betValue * 2)
-			game.showResult("bravo vous avez gagner ! la somme est doublé")
+			let doubledGain = game.betValue * 2
+			game.bankroll = game.bankroll + doubledGain
+			game.handleResultMessage(
+				`Bravo vous avez gagné ${doubledGain} Token !`
+			)
 		} else if (cardRandom === cardMin || cardRandom === cardMax) {
-			game.bankroll = game.bankroll + (game.betValue * 3)
-			game.showResult("bravo vous avez gagner ! la somme est tripplé")
+			let threefoldGain = game.betValue * 3
+			game.bankroll = game.bankroll + threefoldGain
+			game.handleResultMessage(
+				`Parfait ! Mise triplée ${threefoldGain} Token ajouté`
+			)
 		} else {
 			game.bankroll = game.bankroll - game.betValue
-			game.showResult("Perdu ! votre Bank diminue")
+			game.handleResultMessage(
+				`Pas de chance, vous avez perdu ${game.betValue} Token !`
+			)
 		}
-		game.showBankRoll()
+		game.handleBankRoll()
 	},
-	showResult: (message) => {
-
-			console.log(message);
-
+	handleResultMessage: (message) => {
+		resultMessage.textContent = message
 	},
-	showBankRoll: () => {
-		bankAmount.textContent = `Bank: ${game.bankroll}`
+	handleBankRoll: () => {
+		bankAmount.textContent = `Bank: ${game.bankroll} Token`
 	},
 	launch: () => {
+		game.handleResultMessage('')
 		game.randomizeCard()
 		game.displayCards()
-		game.showBankRoll()
+		game.handleBankRoll()
 	},
 	init: () => {
 		game.elements()
