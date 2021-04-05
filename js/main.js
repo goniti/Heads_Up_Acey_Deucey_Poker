@@ -45,11 +45,11 @@ const game = {
 			cardMiddle.classList.add(SecondFlipAnimation)
 			cardLeft.classList.add(firstFlipAnimation)
 			cardRight.classList.add(firstFlipAnimation)
-			let soundCardDeal = new Audio('../audio/dealing-card.wav')
+			let soundCardDeal = new Audio('audio/dealing-card.wav')
 			soundCardDeal.play()
 		} else {
 			cardMiddle.classList.add(SecondFlipAnimation)
-			let soundCardFlip = new Audio('../audio/card-flip.wav')
+			let soundCardFlip = new Audio('audio/card-flip.wav')
 			soundCardFlip.play()
 		}
 	},
