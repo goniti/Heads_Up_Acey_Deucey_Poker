@@ -107,9 +107,9 @@ const game = {
 	},
 	handleError: (amount) => {
 		if (amount > game.bankroll) {
-			game.handleMessage('Impossible de parié, Token insuffisant')
+			game.handleMessage('Impossible to bet, insufficient token')
 		} else if (amount <= 0) {
-			game.handleMessage('Veuillez misez un nombre supérieur a zéro')
+			game.handleMessage('Please bet a number greater than zero')
 		} else {
 			game.handleResult(amount)
 			game.showPlayAgain()
@@ -125,18 +125,18 @@ const game = {
 			let doubledGain = betValue * 2
 			game.bankroll = game.bankroll + doubledGain
 			game.handleMessage(
-				`Bravo vous avez gagné ${doubledGain} Token !`
+				`Well done you have won ${doubledGain} Token !`
 			)
 		} else if (cardRandom === cardMin || cardRandom === cardMax) {
 			let threefoldGain = betValue * 3
 			game.bankroll = game.bankroll + threefoldGain
 			game.handleMessage(
-				`Parfait ! Mise triplée ${threefoldGain} Token ajouté`
+				`Perfect! Tripled bet ${threefoldGain} Token added`
 			)
 		} else {
 			game.bankroll = game.bankroll - betValue
 			game.handleMessage(
-				`Pas de chance, vous avez perdu ${betValue} Token !`
+				`Unlucky, you lost ${betValue} Token !`
 			)
 		}
 		game.handleBankRoll()
